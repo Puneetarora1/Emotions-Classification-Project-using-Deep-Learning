@@ -1,0 +1,585 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #f6f7fb;
+    --surface: #ffffff;
+    --text: #171827;
+    --muted: #73778b;
+    --border: #e8e9f0;
+    --primary: #6c4df6;
+    --primary-dark: #5838df;
+    --primary-soft: #f0edff;
+    --success: #18a874;
+    --danger: #e05252;
+    --shadow: 0 20px 60px rgba(37, 31, 79, 0.08);
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 10% 0%, rgba(108, 77, 246, 0.10), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(99, 102, 241, 0.08), transparent 25%),
+        var(--bg);
+}
+
+button,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.page-shell {
+    width: min(1080px, calc(100% - 36px));
+    margin: 0 auto;
+}
+
+.navbar {
+    height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    color: white;
+    font-size: 12px;
+    background: linear-gradient(135deg, #8065ff, #5739e2);
+    box-shadow: 0 8px 20px rgba(108, 77, 246, 0.25);
+}
+
+.brand-accent {
+    color: var(--primary);
+}
+
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f0aa37;
+}
+
+.status-pill.online .status-dot {
+    background: var(--success);
+    box-shadow: 0 0 0 4px rgba(24, 168, 116, 0.10);
+}
+
+.status-pill.offline .status-dot {
+    background: var(--danger);
+}
+
+.hero {
+    text-align: center;
+    padding: 72px 0 48px;
+}
+
+.eyebrow,
+.section-label {
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: var(--primary-soft);
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 66px);
+    line-height: 1.03;
+    letter-spacing: -3px;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero-text {
+    max-width: 610px;
+    margin: 22px auto 0;
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.classifier-card,
+.result-section {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(226, 227, 237, 0.9);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.classifier-card {
+    padding: 30px;
+}
+
+.card-top,
+.result-header,
+.probability-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card-top h2,
+.result-header h2 {
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.card-top p {
+    color: var(--muted);
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+.model-badge {
+    flex-shrink: 0;
+    padding: 7px 11px;
+    border-radius: 8px;
+    color: var(--primary);
+    background: var(--primary-soft);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.input-wrapper {
+    margin-top: 24px;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrapper:focus-within {
+    border-color: rgba(108, 77, 246, 0.55);
+    box-shadow: 0 0 0 4px rgba(108, 77, 246, 0.08);
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    resize: vertical;
+    min-height: 160px;
+    padding: 19px;
+    color: var(--text);
+    background: transparent;
+    line-height: 1.65;
+    font-size: 15px;
+}
+
+textarea::placeholder {
+    color: #a5a8b7;
+}
+
+.input-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 17px 13px;
+    color: #9a9daf;
+    font-size: 11px;
+}
+
+.examples {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 14px 0 20px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.example-chip {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 10px;
+    color: #626579;
+    background: #fafafd;
+    font-size: 11px;
+    transition: 0.2s;
+}
+
+.example-chip:hover {
+    color: var(--primary);
+    border-color: #d6cffd;
+    background: var(--primary-soft);
+}
+
+.predict-btn {
+    width: 100%;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 0;
+    border-radius: 13px;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    box-shadow: 0 12px 24px rgba(108, 77, 246, 0.20);
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.predict-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(108, 77, 246, 0.27);
+}
+
+.predict-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.btn-arrow {
+    font-size: 20px;
+    line-height: 0;
+}
+
+.error-box {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    padding: 13px 15px;
+    border: 1px solid #f2cccc;
+    border-radius: 12px;
+    color: #a83c3c;
+    background: #fff5f5;
+}
+
+.error-icon {
+    display: grid;
+    place-items: center;
+    width: 21px;
+    height: 21px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: white;
+    background: var(--danger);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.error-box strong {
+    font-size: 12px;
+}
+
+.error-box p {
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+.result-section {
+    margin-top: 28px;
+    padding: 30px;
+    animation: resultIn 0.45s ease;
+}
+
+@keyframes resultIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reset-btn {
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 8px 11px;
+    color: var(--muted);
+    background: white;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.reset-btn:hover {
+    color: var(--primary);
+    border-color: #d8d1ff;
+}
+
+.result-main {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.emotion-card {
+    padding: 28px;
+    text-align: center;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #f4f1ff, #faf9ff);
+    border: 1px solid #e5e0ff;
+}
+
+.emotion-icon {
+    font-size: 56px;
+    margin-bottom: 10px;
+}
+
+.emotion-label {
+    text-transform: capitalize;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.confidence-text {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.confidence-text strong {
+    color: var(--text);
+}
+
+.confidence-track {
+    height: 8px;
+    margin-top: 16px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #ded9f5;
+}
+
+.confidence-fill {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #8065ff, #5c40e8);
+    transition: width 0.8s ease;
+}
+
+.probability-card {
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.probability-heading {
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.probability-heading h3 {
+    font-size: 14px;
+}
+
+.probability-heading span {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.probability-list {
+    display: grid;
+    gap: 14px;
+}
+
+.probability-row {
+    display: grid;
+    grid-template-columns: 72px 1fr 48px;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+}
+
+.probability-name {
+    text-transform: capitalize;
+    color: #5f6273;
+    font-weight: 600;
+}
+
+.probability-track {
+    height: 7px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: #ececf2;
+}
+
+.probability-fill {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: #8974ee;
+    transition: width 0.7s ease;
+}
+
+.probability-value {
+    text-align: right;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.analyzed-text {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 14px;
+    background: #fafafd;
+    border: 1px solid var(--border);
+}
+
+.analyzed-text span {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.analyzed-text p {
+    margin-top: 7px;
+    color: #4f5262;
+    font-size: 13px;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 35px 0 45px;
+    color: #999cab;
+    font-size: 11px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 720px) {
+    .page-shell {
+        width: min(100% - 24px, 600px);
+    }
+
+    .navbar {
+        height: 70px;
+    }
+
+    .hero {
+        padding: 50px 0 34px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .hero-text {
+        font-size: 14px;
+    }
+
+    .classifier-card,
+    .result-section {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .card-top,
+    .result-header {
+        align-items: flex-start;
+    }
+
+    .model-badge {
+        display: none;
+    }
+
+    .result-main {
+        grid-template-columns: 1fr;
+    }
+
+    .emotion-card {
+        padding: 24px;
+    }
+
+    .status-pill {
+        font-size: 10px;
+    }
+
+    footer {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+}
+
+@media (max-width: 430px) {
+    .examples {
+        align-items: flex-start;
+    }
+
+    .examples > span {
+        width: 100%;
+    }
+
+    .result-header {
+        flex-direction: column;
+    }
+
+    .reset-btn {
+        width: 100%;
+    }
+
+    .probability-row {
+        grid-template-columns: 65px 1fr 44px;
+    }
+}
