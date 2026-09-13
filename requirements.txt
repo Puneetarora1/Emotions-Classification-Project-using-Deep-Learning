@@ -4,3 +4,4 @@ pydantic
 tensorflow-cpu
 numpy
 h5py
+contractions
