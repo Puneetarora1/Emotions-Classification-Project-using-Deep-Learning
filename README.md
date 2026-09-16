@@ -40,4 +40,4 @@ An end-to-end NLP project that classifies text into six emotions using deep lear
 👉 [Try the Emotion Classification Model](https://emotions-classification-project-using.onrender.com)
 
 ## 📷 Project Snapshot
-- ![Web Application View](https://github.com/Puneetarora1/Uber-Ride-Cancellation-Prediction-Project/blob/main/Web%20app%20Snapshot.png)
+- ![Web Application View](https://github.com/Puneetarora1/Emotions-Classification-Project-using-Deep-Learning/blob/main/Project%20snap.png)
